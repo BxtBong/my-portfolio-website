@@ -127,7 +127,7 @@ const projectDetails = {
     workflows: [
         {
             step: 1,
-            title: 'Admin Login',
+            title: 'HR Admin Login',
             description: 'Admin authenticates via secure login page',
             endpoint: 'POST /api/auth/login',
             data: 'username, password'
