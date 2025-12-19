@@ -182,7 +182,7 @@ const projects = [
     title: 'Interview Form Management System',
     description: 'Full-stack Next.js app for managing candidate interview forms with invitation codes, pre-filled forms, and admin dashboard.',
     stack: ['Next.js', 'TypeScript', 'Cloudflare Workers', 'Cloudflare D1'],
-    image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=1200&q=80',
+    image: '/Dashboard.png',
     github: '#',
     live: 'https://interview-form-1.xiaothung-bong.workers.dev',
     details: '/projects/interview-form' // 添加详情页面路由
