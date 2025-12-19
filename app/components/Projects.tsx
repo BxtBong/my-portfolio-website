@@ -1,227 +1,294 @@
+
+
 // 'use client'
 
-// import { motion } from 'framer-motion'
-// import { ExternalLink, Github, Eye } from 'lucide-react'
+// import { ExternalLink, Github } from 'lucide-react'
+// import { useState, useEffect } from 'react'
 
 // const projects = [
 //   {
 //     title: 'E-Commerce Furniture Website',
 //     description: 'A full-featured e-commerce platform for furniture shopping with customer accounts, admin dashboard, and sales reporting.',
 //     stack: ['HTML', 'CSS', 'PHP', 'JavaScript', 'MySQL'],
+//     image: 'https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&q=80',
 //     github: '#',
 //     live: '#',
-//     details: '#',
 //   },
 //   {
 //     title: 'Company Internal Wiki',
 //     description: 'RESTful internal wiki with role-based access control, full-text search, and Markdown editing for company documentation.',
 //     stack: ['React.js', 'TypeScript', 'Express.js', 'MySQL', 'Elasticsearch', 'Docker'],
+//     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
 //     github: '#',
 //     live: '#',
-//     details: '#',
 //   },
 //   {
 //     title: 'Interview Form Management System',
 //     description: 'Full-stack Next.js app for managing candidate interview forms with invitation codes, pre-filled forms, and admin dashboard.',
 //     stack: ['Next.js', 'TypeScript', 'Cloudflare Workers', 'Cloudflare D1'],
+//     image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=1200&q=80',
 //     github: '#',
 //     live: 'https://interview-form-1.xiaothung-bong.workers.dev',
-//     details: '#',
 //   },
 // ]
 
 // export default function Projects() {
+//   const [isDark, setIsDark] = useState(false)
+
+//   // Theme Detection (保持不变)
+//   useEffect(() => {
+//     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+//     setIsDark(prefersDark)
+
+//     const handleThemeChange = () => {
+//       const bodyBg = window.getComputedStyle(document.body).backgroundColor
+//       const isDarkMode = bodyBg === 'rgb(9, 12, 19)' || bodyBg === 'rgb(9,12,19)' || document.body.classList.contains('dark')
+//       setIsDark(isDarkMode)
+//     }
+
+//     const observer = new MutationObserver(handleThemeChange)
+//     observer.observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] })
+//     handleThemeChange()
+//     return () => observer.disconnect()
+//   }, [])
+
+//   const titleColor = isDark ? '#f3f4f6' : '#171717'
+//   const linkBaseClass = "w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-full text-white transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-lime-400/30"
+
 //   return (
-//     <section id="work" className="section-padding py-20">
-//       <motion.div
-//         initial={{ opacity: 0 }}
-//         whileInView={{ opacity: 1 }}
-//         viewport={{ once: true }}
-//       >
-//         <h2 className="text-2xl md:text-3xl font-bold mb-12">
-//           <span className="code-text mr-2">03.</span>
+//     <section id="work" className="py-24 md:py-32 scroll-mt-20">
+//       <div className="max-w-[1024px] mx-auto px-6">
+//         {/* Header */}
+//         <h2 className="text-2xl md:text-3xl font-bold mb-12" style={{ color: titleColor }}>
 //           Selected Projects
 //         </h2>
 
-//         <div className="space-y-12">
+//         {/* Projects Grid */}
+//         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 //           {projects.map((project, index) => (
-//             <motion.div
-//               key={project.title}
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               viewport={{ once: true }}
-//               transition={{ delay: index * 0.1 }}
-//               className="p-6 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors hover-lift"
-//             >
-//               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-//                 <div className="flex-1">
-//                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-//                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-//                     {project.description}
-//                   </p>
-                  
-//                   <div className="flex flex-wrap gap-2 mb-4">
-//                     {project.stack.map((tech) => (
-//                       <span
-//                         key={tech}
-//                         className="code-text px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm"
-//                       >
-//                         {tech}
-//                       </span>
-//                     ))}
+//             <div key={index} className="group">
+//               {/* Project Card */}
+//               <div className="relative aspect-video rounded-2xl overflow-hidden group focus-within:ring-4 focus-within:ring-lime-400/50">
+//                 {/* Background Image */}
+//                 <img
+//                   src={project.image}
+//                   alt={project.title}
+//                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+//                 />
+                
+//                 {/* Hover Overlay */}
+//                 <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-6 flex flex-col justify-end">
+//                   {/* Title */}
+//                   <div className="mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out delay-100">
+//                     <h3 className="text-lg md:text-lg font-bold text-white mb-3">
+//                       {project.title}
+//                     </h3>
+//                     {/* <p className="text-gray-300 text-base">
+//                       {project.description}
+//                     </p> */}
 //                   </div>
 
-//                   <div className="flex items-center space-x-4">
-//                     {project.github && (
-//                       <a
-//                         href={project.github}
-//                         className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-//                       >
-//                         <Github size={18} />
-//                         <span>Code</span>
-//                       </a>
-//                     )}
-                    
-//                     {project.live && (
-//                       <a
-//                         href={project.live}
-//                         target="_blank"
-//                         rel="noopener noreferrer"
-//                         className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-//                       >
-//                         <ExternalLink size={18} />
-//                         <span>Live Demo</span>
-//                       </a>
-//                     )}
-                    
-//                     {project.details && (
-//                       <a
-//                         href={project.details}
-//                         className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-//                       >
-//                         <Eye size={18} />
-//                         <span>View Details</span>
-//                       </a>
-//                     )}
-//                   </div>
-//                 </div>
+//                   {/* Bottom Bar */}
+//                   <div className="flex justify-between items-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out delay-200">
+//                     {/* Tech Stack
+//                     <div className="flex flex-wrap gap-2">
+//                       {project.stack.slice(0, 4).map((tech, techIndex) => (
+//                         <span
+//                           key={techIndex}
+//                           className="px-3 py-1 bg-lime-400/20 backdrop-blur-sm text-lime-100 text-sm font-mono rounded-full border border-lime-400/30 shadow-md"
+//                         >
+//                           {tech}
+//                         </span>
+//                       ))}
+//                       {project.stack.length > 4 && (
+//                         <span className="px-3 py-1 bg-lime-400/20 backdrop-blur-sm text-lime-100 text-sm font-mono rounded-full border border-lime-400/30 shadow-md">
+//                           +{project.stack.length - 4} More
+//                         </span>
+//                       )}
+//                     </div> */}
 
-//                 {/* 项目图片占位符 */}
-//                 <div className="lg:w-64 h-48 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center">
-//                   <div className="text-center p-4">
-//                     <div className="w-16 h-16 mx-auto mb-2 bg-gray-200 dark:bg-gray-700 rounded-lg" />
-//                     <p className="code-text text-sm">Project Preview</p>
+//                     {/* Action Icons */}
+//                     <div className="flex gap-3">
+//                       {project.github && project.github !== '#' && (
+//                         <a
+//                           href={project.github}
+//                           target="_blank"
+//                           rel="noopener noreferrer"
+//                           className={linkBaseClass}
+//                           onClick={(e) => e.stopPropagation()}
+//                           aria-label="View GitHub repository"
+//                         >
+//                           <Github size={16} />
+//                         </a>
+//                       )}
+//                       {project.live && project.live !== '#' && (
+//                         <a
+//                           href={project.live}
+//                           target="_blank"
+//                           rel="noopener noreferrer"
+//                           className={linkBaseClass}
+//                           onClick={(e) => e.stopPropagation()}
+//                           aria-label="View live demo"
+//                         >
+//                           <ExternalLink size={16} />
+//                         </a>
+//                       )}
+//                     </div>
 //                   </div>
 //                 </div>
 //               </div>
-//             </motion.div>
+//             </div>
 //           ))}
 //         </div>
-//       </motion.div>
+
+//         {/* Project Counter (显示总数) */}
+//         <div className="text-center mt-12">
+//           <p className="font-mono text-sm" style={{ color: titleColor }}>
+//             Showing {projects.length} projects
+//           </p>
+//         </div>
+//       </div>
 //     </section>
 //   )
 // }
 
 'use client'
 
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, Eye } from 'lucide-react' // 添加 Eye 图标
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation' // 添加路由
 
 const projects = [
   {
     title: 'E-Commerce Furniture Website',
     description: 'A full-featured e-commerce platform for furniture shopping with customer accounts, admin dashboard, and sales reporting.',
     stack: ['HTML', 'CSS', 'PHP', 'JavaScript', 'MySQL'],
+    image: 'https://binus.ac.id/malang/wp-content/uploads/2020/09/Temukan-penjelasan-lengkap-tentang-apa-yang-membuat-furniture-berkualitas-baik.jpg',
     github: '#',
-    live: '#',
-    details: '#',
+    live: 'https://drive.google.com/drive/folders/1X8pQGMCVesxqtFiPZr7ki_ETe0GyySWM',
+    details: '/projects/ecommerce' // 添加详情页面路由
   },
   {
     title: 'Company Internal Wiki',
     description: 'RESTful internal wiki with role-based access control, full-text search, and Markdown editing for company documentation.',
     stack: ['React.js', 'TypeScript', 'Express.js', 'MySQL', 'Elasticsearch', 'Docker'],
-    github: '#',
-    live: '#',
-    details: '#',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
+    // github: '#',
+    // live: '#',
+    // details: '/projects/company-wiki' // 添加详情页面路由
+
   },
   {
     title: 'Interview Form Management System',
     description: 'Full-stack Next.js app for managing candidate interview forms with invitation codes, pre-filled forms, and admin dashboard.',
     stack: ['Next.js', 'TypeScript', 'Cloudflare Workers', 'Cloudflare D1'],
+    image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=1200&q=80',
     github: '#',
     live: 'https://interview-form-1.xiaothung-bong.workers.dev',
-    details: '#',
+    details: '/projects/interview-form' // 添加详情页面路由
+
   },
 ]
 
 export default function Projects() {
+  const [isDark, setIsDark] = useState(false)
+  const router = useRouter() // 初始化路由
+
+  // Theme Detection (保持不变)
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    setIsDark(prefersDark)
+
+    const handleThemeChange = () => {
+      const bodyBg = window.getComputedStyle(document.body).backgroundColor
+      const isDarkMode = bodyBg === 'rgb(9, 12, 19)' || bodyBg === 'rgb(9,12,19)' || document.body.classList.contains('dark')
+      setIsDark(isDarkMode)
+    }
+
+    const observer = new MutationObserver(handleThemeChange)
+    observer.observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] })
+    handleThemeChange()
+    return () => observer.disconnect()
+  }, [])
+
+  const titleColor = isDark ? '#f3f4f6' : '#171717'
+  const linkBaseClass = "w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-full text-white transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-lime-400/30"
+
   return (
-    <section id="work" className="section-padding py-20 scroll-mt-20">
-      <div>
-        <h2 className="text-2xl md:text-3xl font-bold mb-12">
-          <span className="code-text mr-2">03.</span>
+    <section id="work" className="py-24 md:py-32 scroll-mt-20">
+      <div className="max-w-[1024px] mx-auto px-6">
+        {/* Header */}
+        <h2 className="text-2xl md:text-3xl font-bold mb-12" style={{ color: titleColor }}>
           Selected Projects
         </h2>
 
-        <div className="space-y-12">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <div
-              key={project.title}
-              className="card hover-lift animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="code-text px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+            <div key={index} className="group">
+              {/* Project Card */}
+              <div className="relative aspect-video rounded-2xl overflow-hidden group focus-within:ring-4 focus-within:ring-lime-400/50">
+                {/* Background Image */}
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-6 flex flex-col justify-end">
+                  {/* Title */}
+                  <div className="flex items-center  justify-between">
+                    <h3 className="text-lg md:text-lg font-bold text-white mb-3">
+                      {project.title}
+                    </h3>
+                    {project.github && project.github !== '#' && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={linkBaseClass}
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label="View GitHub repository"
+                        >
+                          <Github size={16} />
+                        </a>
+                      )}
+                      {project.live && project.live !== '#' && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={linkBaseClass}
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label="View live demo"
+                        >
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                      {/* 添加 View Details 按钮 */}
+                      {project.details && (
+                        <button
+                          onClick={() => router.push(project.details)}
+                          className={linkBaseClass}
+                          aria-label="View project details"
+                        >
+                          <Eye size={16} />
+                        </button>
+                      )}
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                      >
-                        <Github size={18} />
-                        <span>Code</span>
-                      </a>
-                    )}
-                    
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                      >
-                        <ExternalLink size={18} />
-                        <span>Live Demo</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                {/* Project Image Placeholder */}
-                <div className="lg:w-64 h-48 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg opacity-80" />
-                    <p className="code-text text-sm">Project Preview</p>
-                  </div>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Project Counter */}
+        <div className="text-center mt-12">
+          <p className="font-mono text-sm" style={{ color: titleColor }}>
+            Showing {projects.length} projects
+          </p>
         </div>
       </div>
     </section>
