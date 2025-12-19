@@ -57,7 +57,7 @@ export default function Skills() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [isPaused, setIsPaused] = useState(false)
   const scrollPosRef = useRef(0)
-  const animationFrameRef = useRef<number>()
+  const animationFrameRef = useRef<number | null>(null)
 
   // 主题检测
   // 主题检测（使用和 Hero 一样的方式）
