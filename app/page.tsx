@@ -1,7 +1,15 @@
+import Hero from '@/components/Hero'
+import About from '@/components/About'
+import Skills from '@/components/Skills'
+import Projects from '@/components/Projects'
+
 export default function Home() {
   return (
-    <h1 style={{ color: 'red', fontSize: '48px' }}>
-      HOMEPAGE UPDATED SUCCESSFULLY
-    </h1>
-  );
+    <main className="min-h-screen">
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+    </main>
+  )
 }
