@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/navigation'
+import { ArrowLeft} from 'lucide-react'
 
 
 export default function ComputerWikiDetail() {
@@ -35,7 +36,7 @@ export default function ComputerWikiDetail() {
         onClick={() => router.back()}
         className="fixed top-4 md:top-6 left-4 md:left-6 z-50 p-2 md:p-3 rounded-full border backdrop-blur-sm hover:bg-white/10 transition-all group"
         style={{ backgroundColor: colors.bgColor, borderColor: colors.borderColor}}>
-
+          <ArrowLeft size={18} />
       </button>
     </div>
   )
